@@ -29,7 +29,6 @@ exports.register = async (req, res) => {
       fullname,
       username,
       password: hashedPassword,
-      // profilePhoto : gender === male ? maleProfilePhoto : femaleProfilePhoto,
       profilePhoto: gender === "male" ? maleProfilePhoto : femaleProfilePhoto,
       gender,
     });
@@ -103,7 +102,9 @@ exports.logout = (req, res) => {
 exports.getOtherUsers = async (req, res) => {
   try {
     const loggedInUserId = req.id;
-    const otherUsers = await User.find({ _id:{ $ne: loggedInUserId } }).select("-password");
+    const otherUsers = await User.find({ _id: { $ne: loggedInUserId } }).select(
+      "-password"
+    );
     return res.status(200).json(otherUsers);
   } catch (error) {
     console.log(error);

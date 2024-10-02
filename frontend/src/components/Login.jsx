@@ -18,7 +18,7 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      // console.log(user);
+      
       const res = await axios.post(
         "http://localhost:3000/api/v1/user/login",
         user,
@@ -30,8 +30,7 @@ const Login = () => {
         }
       );
       navigate("/");
-      // console.log(res);
-      // console.log(res.data);
+
       dispatch(setAuthUser(res.data));
     } catch (error) {
       toast.error(error.response.data.message);

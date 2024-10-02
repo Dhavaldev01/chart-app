@@ -20,7 +20,6 @@ const navigate = useNavigate();
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      // console.log(user); 
       const res = await axios.post(
         "http://localhost:3000/api/v1/user/register",user,
         {
@@ -35,7 +34,6 @@ const navigate = useNavigate();
           toast.success(res.data.meassage)
         }
       
-      // console.log(res.data);  
     } catch (error) {
       toast.error(error.response.data.meassage)
       console.log(error.response?.data || error.message);  
